@@ -27,15 +27,19 @@ public class UserInterface {
                     break;
                 case "go north":
                     IO.println("Going north");
+                    adventureGame.goNorth();
                     break;
                 case "go east":
                     IO.println("Going east");
+                    adventureGame.goEast();
                     break;
                 case "go south":
                     IO.println("Going south");
+                    adventureGame.goSouth();
                     break;
                 case "go west":
                     IO.println("Going west");
+                    adventureGame.goWest();
                     break;
                 case "exit":
                     IO.println("Exitting");
