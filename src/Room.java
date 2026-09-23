@@ -8,12 +8,16 @@ public class Room {
     private Room south;
     private Room west;
 
-    public Room(String name, String descrption) {
+    public Room(String name, String description) {
         this.name = name;
-        this.description = descrption;
+        this.description = description;
     }
 
-    public String getDescrption() {
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
         return description;
     }
 
