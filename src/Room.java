@@ -1,6 +1,6 @@
 public class Room {
     private String name;
-    private String descrption;
+    private String description;
 
     //Rummene
     private Room north;
@@ -10,11 +10,11 @@ public class Room {
 
     public Room(String name, String descrption) {
         this.name = name;
-        this.descrption = descrption;
+        this.description = descrption;
     }
 
     public String getDescrption() {
-        return descrption;
+        return description;
     }
 
     //North
