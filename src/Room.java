@@ -1,54 +1,54 @@
 public class Room {
-    private String navn;
-    private String beskrivelse;
+    private String name;
+    private String descrption;
 
     //Rummene
-    private Room nord;
-    private Room øst;
-    private Room syd;
-    private Room vest;
+    private Room north;
+    private Room east;
+    private Room south;
+    private Room west;
 
-    public Room(String navn, String beskrivelse) {
-        this.navn = navn;
-        this.beskrivelse = beskrivelse;
+    public Room(String name, String descrption) {
+        this.name = name;
+        this.descrption = descrption;
     }
 
-    public String getBeskrivelse() {
-        return beskrivelse;
+    public String getDescrption() {
+        return descrption;
     }
 
-    //Nord
-    public void setNord(Room room) {
-        nord = room;
+    //North
+    public void setNorth(Room room) {
+        north = room;
     }
 
-    public Room getNord() {
-        return nord;
+    public Room getNorth() {
+        return north;
     }
 
-    //Øst
-    public void setØst(Room room) {
-        øst = room;
+    //East
+    public void setEast(Room room) {
+        east= room;
     }
 
-    public Room getØst() {
-        return øst;
+    public Room getEast() {
+        return east;
     }
 
-    //Syd
-    public void setSyd(Room room) {
-        syd = room;
+    //South
+    public void setSouth(Room room) {
+        south = room;
     }
 
-    public Room getSyd() {
-        return syd;
+    public Room getSouth() {
+        return south;
     }
-    //Vest
-    public void setVest(Room room) {
-        vest = room;
+    //West
+    public void setWest(Room room) {
+        west = room;
     }
 
-    public Room getVest() {
-        return vest;
+    public Room getWest() {
+        return west;
     }
 }
