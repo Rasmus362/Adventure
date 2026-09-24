@@ -1,47 +1,41 @@
 public class UserInterface {
 
-    Adventure adventureGame;
+   public Adventure adventureGame;
 
-    UserInterface(Adventure adventureGame) {
-
+    public UserInterface(Adventure adventureGame) {
         this.adventureGame = adventureGame;
     }
 
-    public void Directions() {
+    public void run() {
         boolean running = true;
         while (running) {
             String command = IO.readln("> ");
             switch (command) {
                 case "look":
-                    IO.println("You are in " + adventureGame.getCurrentRoom().getName());
-                    IO.println(adventureGame.getCurrentRoom().getDescription());
+                    showCurrentRoom();
                     break;
-                case "help":
-                    IO.println("Commands:" +
-                            "\n- look"+
-                            "\n- go north" +
-                            "\n- go east" +
-                            "\n- go south" +
-                            "\n- go west" +
-                            "\n- exit");
+
+                    case "help":
+                    showCurrentRoom();
                     break;
-                case "go north":
-                    IO.println("Going north");
-                    adventureGame.goNorth();
+
+                    case "go north":
+                    move("north");
                     break;
-                case "go east":
-                    IO.println("Going east");
-                    adventureGame.goEast();
+
+                    case "go east":
+                    move("south");
                     break;
-                case "go south":
-                    IO.println("Going south");
-                    adventureGame.goSouth();
+
+                    case "go south":
+                    move("south");
                     break;
-                case "go west":
-                    IO.println("Going west");
-                    adventureGame.goWest();
+
+                    case "go west":
+                    move("west");
                     break;
-                case "exit":
+
+                    case "exit":
                     IO.println("Exitting");
                     running = false;
                     break;
@@ -49,6 +43,28 @@ public class UserInterface {
         }
 
     }
+    private void move(String direction) {
+        IO.println("Going " + direction);
+        boolean moved = adventureGame.move(direction);
+        if (!moved) {
+            IO.println("you cannot go that way");
+        }
+    }
 
+    private void showCurrentRoom() {
+        IO.println("You are in " + adventureGame.getCurrentRoomName());
+        IO.println(adventureGame.getCurrentRoomDescription());
+    }
 
+    private void showHelp() {
+        IO.println("""
+                Commands:
+                - look
+                - go north
+                - go east
+                - go south
+                - go west
+                - exit
+                """);
+    }
 }

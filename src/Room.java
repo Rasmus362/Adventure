@@ -1,6 +1,6 @@
 public class Room {
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
 
     //Rummene
     private Room north;
