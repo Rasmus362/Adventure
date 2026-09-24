@@ -16,7 +16,7 @@ public class UserInterface {
                     break;
 
                     case "help":
-                    showCurrentRoom();
+                    showHelp();
                     break;
 
                     case "go north":
@@ -24,7 +24,7 @@ public class UserInterface {
                     break;
 
                     case "go east":
-                    move("south");
+                    move("east");
                     break;
 
                     case "go south":
