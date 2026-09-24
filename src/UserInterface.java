@@ -1,54 +1,25 @@
 public class UserInterface {
 
-    Adventure adventureGame;
+    private Adventure adventure;
 
-    UserInterface(Adventure adventureGame) {
-
-        this.adventureGame = adventureGame;
+    public UserInterface(Adventure adventure) {
+        this.adventure = adventure;
     }
 
     public void Directions() {
-        boolean running = true;
-        while (running) {
-            String command = IO.readln("> ");
-            switch (command) {
-                case "look":
-                    IO.println("You are in " + adventureGame.getCurrentRoom().getName());
-                    IO.println(adventureGame.getCurrentRoom().getDescription());
-                    break;
-                case "help":
-                    IO.println("Commands:" +
-                            "\n- look"+
-                            "\n- go north" +
-                            "\n- go east" +
-                            "\n- go south" +
-                            "\n- go west" +
-                            "\n- exit");
-                    break;
-                case "go north":
-                    IO.println("Going north");
-                    adventureGame.goNorth();
-                    break;
-                case "go east":
-                    IO.println("Going east");
-                    adventureGame.goEast();
-                    break;
-                case "go south":
-                    IO.println("Going south");
-                    adventureGame.goSouth();
-                    break;
-                case "go west":
-                    IO.println("Going west");
-                    adventureGame.goWest();
-                    break;
-                case "exit":
-                    IO.println("Exitting");
-                    running = false;
-                    break;
-            }
-        }
-
+        adventure.run();
     }
 
+    public String getDirection() {
+        return IO.readln("Hvilken retning vil du gå? ");
+    }
 
+    public void showRoom(Room room) {
+        IO.println(room.getName());
+        IO.println(room.getDescription());
+    }
+
+    public void showNoExit() {
+        IO.println("Du kan ikke gå den vej.");
+    }
 }

@@ -20,6 +20,7 @@ public class Room {
     public String getDescription() {
         return description;
     }
+
     //North
     public void setNorth(Room room) {
         north = room;
