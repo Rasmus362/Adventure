@@ -54,6 +54,7 @@ public class UserInterface {
     private void showCurrentRoom() {
         IO.println("You are in " + adventureGame.getCurrentRoomName());
         IO.println(adventureGame.getCurrentRoomDescription());
+
     }
 
     private void showHelp() {
