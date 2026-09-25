@@ -4,7 +4,7 @@ public class Player {
     //Håndtere hvor spilleren befinder sig, og håndtere bevægelser
     private Room currentRoom;
 
-    ArrayList<Item> items = new ArrayList<>();
+    ArrayList<Item> inventory = new ArrayList<>();
 
     public Player(Room startRoom) {
         currentRoom = startRoom;
@@ -33,4 +33,28 @@ public class Player {
     public String getCurrentRoomDescription() {
         return currentRoom.getDescription();
     }
+
+    public void takeItem(Item item) {
+        inventory.add(item);
+    }
+
+    public void dropItem(Item item) {
+        inventory.remove(item);
+    }
+
+    public ArrayList<Item> getItems() {
+        return inventory;
+    }
+
+    public Item findItem(String navnItem) {
+        for(Item item : inventory) {
+            if(item.getNavnItem().equals(navnItem)) {
+                return inventory;
+            }
+        }
+
+        return null;
+    }
+
+
 }
