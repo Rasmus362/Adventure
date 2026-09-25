@@ -48,13 +48,38 @@ public class Player {
 
     public Item findItem(String navnItem) {
         for(Item item : inventory) {
-            if(item.getNavnItem().equals(navnItem)) {
-                return inventory;
+            if(item.getItemNavn().equals(navnItem)) {
+                return item;
             }
         }
 
         return null;
     }
+
+    public Item takeItem(String navnItem) {
+        Item item = currentRoom.findItem(navnItem);
+
+        if (item != null) {
+            currentRoom.removeItem(item);
+            inventory.add(item);
+            return item;
+        }
+
+        return null;
+    }
+
+    public Item dropItem(String navnItem) {
+        Item item = findItem(navnItem);
+
+        if(item != null) {
+            inventory.remove(item);
+            currentRoom.addItem(item);
+            return item;
+        }
+
+        return null;
+    }
+
 
 
 }

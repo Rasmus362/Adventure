@@ -74,5 +74,14 @@ public class Room {
         return items;
     }
 
+    public Item findItem(String navnItem) {
+        for (Item item : items) {
+            if (item.getItemNavn().equals(navnItem)) {
+                return item;
+            }
+        }
+
+        return null;
+    }
 
 }

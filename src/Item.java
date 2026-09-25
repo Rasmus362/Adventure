@@ -10,8 +10,11 @@ public class Item {
 
     }
 
+    public String getItemNavn() {
+        return itemNavn;
+    }
+
     public String toString() {
         return String.format("%s, %s", itemNavn, heleItemNavn);
     }
-
 }
