@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public class Player {
     //Håndtere hvor spilleren befinder sig, og håndtere bevægelser
     private Room currentRoom;
+
+    ArrayList<Item> items = new ArrayList<>();
 
     public Player(Room startRoom) {
         currentRoom = startRoom;

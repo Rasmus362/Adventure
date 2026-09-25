@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public class Room {
     private final String name;
     private final String description;
+
+    private ArrayList<Item> items = new ArrayList<>();
 
     //Rummene
     private Room north;
@@ -54,5 +58,19 @@ public class Room {
 
     public Room getWest() {
         return west;
+    }
+
+    //Items
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
     }
 }
