@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public class Room {
     private final String name;
     private final String description;
+    //opretter Arraylist for items i rum
+    private ArrayList<Item> items = new ArrayList<>();
 
     //Rummene
     private Room north;
@@ -54,5 +58,25 @@ public class Room {
 
     public Room getWest() {
         return west;
+    }
+    //metoder til at tilføje og fjerne items fra rum
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    //metode til at se items i rum
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+    //metode til at finde bestemt item ud fra det korte navn
+    public Item findItem(String itemName) {
+        for (Item item : items) {
+            if (item.getShortName().equals(ItemName)) {
+                return item;
+            }
+        }
+        return null;
     }
 }
