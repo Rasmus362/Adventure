@@ -51,7 +51,7 @@ public class Player {
         return null;
     }
     //metode til at spilleren kan lede i sit eget inventory
-    public Item findItem(String ItemName) {
+    public Item findItem(String itemName) {
         for (Item item : inventory) {
             if (item.getShortName().equals(itemName)) {
                 return item;
