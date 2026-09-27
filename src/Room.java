@@ -73,7 +73,7 @@ public class Room {
     //metode til at finde bestemt item ud fra det korte navn
     public Item findItem(String itemName) {
         for (Item item : items) {
-            if (item.getShortName().equals(ItemName)) {
+            if (item.getShortName().equals(itemName)) {
                 return item;
             }
         }
