@@ -69,4 +69,8 @@ public class Player {
         }
         return null;
     }
+    //metode til at sende current rooms items videre til adventure
+    public ArrayList<Item> getCurrentRoomItems() {
+        return currentRoom.getItems();
+    }
 }

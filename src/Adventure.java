@@ -31,4 +31,8 @@ public class Adventure {
     public ArrayList<Item> getInventory() {
         return player.getInventory();
     }
+    //metode til at give current rooms item videre
+    public ArrayList<Item> getCurrentRoomItems() {
+        return player.getCurrentRoomItems();
+    }
 }
