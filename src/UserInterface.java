@@ -88,6 +88,8 @@ public class UserInterface {
                 - go east
                 - go south
                 - go west
+                - inventory (to see inventory)
+                - take + item to take an item
                 - exit
                 """);
     }

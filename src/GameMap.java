@@ -17,7 +17,7 @@ public class GameMap {
         //oprettelse af items
         Item coin = new Item("coin", "a shiny gold coin");
         Item ring = new Item("ring", "old and dirty silver ring");
-        Item boots = new Item("boots", "brand new pair og boots");
+        Item boots = new Item("boots", "brand new pair of boots");
 
         //tilføjer items, til de forskellige rum
         room1.addItem(coin);
