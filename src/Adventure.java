@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Adventure {
 
     private GameMap gameMap;
@@ -16,5 +18,21 @@ public class Adventure {
     }
     public String getCurrentRoomDescription() {
         return player.getCurrentRoomDescription();
+    }
+    //metode fra player class til at tage items
+    public Item takeItem(String itemName) {
+        return player.takeItem(itemName);
+    }
+    //metode fra player class til at smide items
+    public Item dropItem(String itemName) {
+        return player.dropItem(itemName);
+    }
+    //metode fra player class til at se inventory
+    public ArrayList<Item> getInventory() {
+        return player.getInventory();
+    }
+    //metode til at give current rooms item videre
+    public ArrayList<Item> getCurrentRoomItems() {
+        return player.getCurrentRoomItems();
     }
 }

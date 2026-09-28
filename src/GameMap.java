@@ -3,7 +3,7 @@ public class GameMap {
     private Room startRoom;
 
     public GameMap() {
-
+        //Oprettelse af rummene
         Room room1 = new Room("Room 1", "Entry");
         Room room2 = new Room("Room 2", "Hallway");
         Room room3 = new Room("Room 3", "Toilet");
@@ -13,6 +13,16 @@ public class GameMap {
         Room room7 = new Room("Room 7", "Lounge");
         Room room8 = new Room("Room 8", "Guest room nr. 1");
         Room room9 = new Room("Room 9", "Guest room nr. 2");
+
+        //oprettelse af items
+        Item coin = new Item("coin", "a shiny gold coin");
+        Item ring = new Item("ring", "old and dirty silver ring");
+        Item boots = new Item("boots", "brand new pair of boots");
+
+        //tilføjer items, til de forskellige rum
+        room1.addItem(coin);
+        room1.addItem(ring);
+        room2.addItem(boots);
 
         // Alle de forskellige veje man kan tage i spillet.
 //room 1
