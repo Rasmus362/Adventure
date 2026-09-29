@@ -39,4 +39,8 @@ public class Adventure {
     public int getHealth() {
         return player.getHealth();
     }
+    //metode til at sende Eatresult fra player videre til UI
+    public EatResult eat(String itemName) {
+        return player.eat(itemName);
+    }
 }
