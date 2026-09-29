@@ -7,6 +7,14 @@ public class Player {
     //Arraylist til at håndtere spillerens inventory
     private ArrayList<Item> inventory = new ArrayList<>();
 
+    //Healthpoints fra del 3, spilleren starter med 100 i liv
+    private int health = 100;
+
+    //getter til Health
+    public int getHealth() {
+        return health;
+    }
+
     public Player(Room startRoom) {
         currentRoom = startRoom;
     }
