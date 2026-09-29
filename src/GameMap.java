@@ -24,7 +24,7 @@ public class GameMap {
         room1.addItem(ring);
         room2.addItem(boots);
 
-        //tilføjer mad til spillet (fra del 3)
+        //tilføjer mad til spillet (fra del 3) (minus betyder dårlig mad, der tager HP)
         Food bread = new Food("bread", "a loaf of stale old bread", -10);
         Food cake = new Food("cake", "tasty cake", 20);
 
