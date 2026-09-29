@@ -35,4 +35,8 @@ public class Adventure {
     public ArrayList<Item> getCurrentRoomItems() {
         return player.getCurrentRoomItems();
     }
+    //metode til at se HP, som er oprettet i Player klassen
+    public int getHealth() {
+        return player.getHealth();
+    }
 }

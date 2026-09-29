@@ -54,6 +54,11 @@ public class UserInterface {
                             IO.println(item.getLongName());
                         }
                         break;
+
+                    //Når man skriver health kan man se HP
+                    case "health":
+                        IO.println("Health: " + adventureGame.getHealth());
+                        break;
                 }
             }
         }
