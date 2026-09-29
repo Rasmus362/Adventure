@@ -17,6 +17,8 @@ public class UserInterface {
                 takeItem(command);
             } else if (command.startsWith("drop ")) {
                 dropItem(command);
+            } else if (command.startsWith("eat ")) {
+                eatItem(command);
             } else {
                 switch (command) {
                     case "look":
@@ -95,6 +97,8 @@ public class UserInterface {
                 - go west
                 - inventory (to see inventory)
                 - take + item to take an item
+                - drop + item to drop an item
+                - eat + food item to eat item
                 - exit
                 """);
     }
@@ -116,6 +120,22 @@ public class UserInterface {
             IO.println("You have dropped " + item.getLongName());
         } else {
             IO.println("You don't have anything like " + itemName + " in your inventory");
+        }
+    }
+    //metoden der bliver kaldt på når man skriver eat
+    private void eatItem(String command) {
+        String itemName = command.substring(4); //samme concept som dropItem metoden fx
+
+        EatResult result = adventureGame.eat(itemName);
+
+        //bruger switch og case, da der er 3 forskellige udfald
+        switch (result) {
+            case NOT_FOUND: IO.println("There is nothing like " + itemName + " to eat around here");
+            break;
+            case NOT_FOOD: IO.println("You cannot eath the " + itemName);
+            break;
+            case EATEN: IO.println("You have easten the " + itemName);
+            break;
         }
     }
 }
