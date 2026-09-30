@@ -7,6 +7,14 @@ public class Player {
     //Arraylist til at håndtere spillerens inventory
     private ArrayList<Item> inventory = new ArrayList<>();
 
+    //Healthpoints fra del 3, spilleren starter med 100 i liv
+    private int health = 100;
+
+    //getter til Health
+    public int getHealth() {
+        return health;
+    }
+
     public Player(Room startRoom) {
         currentRoom = startRoom;
     }
@@ -72,5 +80,25 @@ public class Player {
     //metode til at sende current rooms items videre til adventure
     public ArrayList<Item> getCurrentRoomItems() {
         return currentRoom.getItems();
+    }
+    //Metode for at spilleren kan spise et food item
+    public EatResult eat(String itemName) {
+        Item item = findItem(itemName); //leder efter item i spillerens inventory
+
+        if (item == null) {
+            item = currentRoom.findItem(itemName); //hvis item ikke er i inventory, tjekker vi efter det i rummet
+        }
+        if (item == null) { //Hvis item hverken er i inventory eller rummet returnere den ...
+            return EatResult.NOT_FOUND;
+        }
+        if (!(item instanceof Food food)) { //Tjekker for om item er et Food item. hvis ikke (!) returnere den ...
+            return EatResult.NOT_FOOD;      //Hvis det er et food item opretter den det som en variable food
+        }
+        health += food.getHealthPoints(); //justere HP i forhold til food item
+
+        inventory.remove(item); //fjerener item fra inventory hvis der var der
+        currentRoom.removeItem(item); //ligeledes fra currentroom hvis det var der
+
+        return EatResult.EATEN;
     }
 }

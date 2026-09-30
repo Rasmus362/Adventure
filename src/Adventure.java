@@ -35,4 +35,12 @@ public class Adventure {
     public ArrayList<Item> getCurrentRoomItems() {
         return player.getCurrentRoomItems();
     }
+    //metode til at se HP, som er oprettet i Player klassen
+    public int getHealth() {
+        return player.getHealth();
+    }
+    //metode til at sende Eatresult fra player videre til UI
+    public EatResult eat(String itemName) {
+        return player.eat(itemName);
+    }
 }
