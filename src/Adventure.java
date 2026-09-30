@@ -35,16 +35,73 @@ public class Adventure {
         return player.getInventory();
     }
     //----------------------------------------Actions-------------------------------------------
-    //metode fra player class til at tage items
-    public Item takeItem(String itemName) {
-        return player.takeItem(itemName);
+
+    //metoden der bliver kaldt på når man skriver take ...
+    public void showTakeItem(String itemName) {
+
+        Item item = player.takeItem(itemName);
+
+        if (item != null) {
+            IO.println(
+                    "You have taken "
+                            + item.getLongName()
+            );
+        } else {
+            IO.println(
+                    "There is nothing like "
+                            + itemName
+                            + " to take around here"
+            );
+        }
     }
-    //metode fra player class til at smide items
-    public Item dropItem(String itemName) {
-        return player.dropItem(itemName);
+
+    //metoden der bliver kaldt på når man skriver drop
+    public void showDropItem(String itemName) {
+
+        Item item = player.dropItem(itemName);
+
+        if (item != null) {
+            IO.println(
+                    "You have dropped " + item.getLongName()
+            );
+        } else {
+            IO.println(
+                    "You don't have anything like "
+                            + itemName
+                            + " in your inventory"
+            );
+        }
     }
-    //metode til at sende Eatresult fra player videre til UI
-    public EatResult eat(String itemName) {
-        return player.eat(itemName);
+
+    //metoden der bliver kaldt på når man skriver eat
+    public void showEatItem(String itemName) {
+
+        EatResult result =
+                player.eat(itemName);
+
+        switch (result) {
+
+            case NOT_FOUND:
+                IO.println(
+                        "There is nothing like "
+                                + itemName
+                                + " to eat around here"
+                );
+                break;
+
+            case NOT_FOOD:
+                IO.println(
+                        "You cannot eat the "
+                                + itemName
+                );
+                break;
+
+            case EATEN:
+                IO.println(
+                        "You have eaten the "
+                                + itemName
+                );
+                break;
+        }
     }
 }

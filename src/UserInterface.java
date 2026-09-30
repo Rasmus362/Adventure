@@ -13,6 +13,8 @@ public class UserInterface {
         while (running) {
             String command = IO.readln("> ");
 
+            //Laver en String array, som modtager command "take" som får index nr. [0]
+            // og selve commanden, som beskrevet i switch'en nedenfor, det får index nr. [1]
             String[] commandTokens = command.trim().toLowerCase().split(" ");
 
             //tilføjer så man kan samle items op
@@ -20,7 +22,7 @@ public class UserInterface {
             switch (commandTokens[0]) {
                 case "take":
                     if (commandTokens.length > 1) {
-                        showTakeItem(commandTokens[1]);
+                        adventureGame.showTakeItem(commandTokens[1]);
                     } else {
                         IO.println("Take what?");
                     }
@@ -28,17 +30,19 @@ public class UserInterface {
 
                 case "drop":
                     if (commandTokens.length > 1) {
-                        showDropItem(commandTokens[1]);
+                        adventureGame.showDropItem(commandTokens[1]);
                     } else {
                         IO.println("Drop what?");
                     }
+                    break;
 
                 case "eat":
                     if (commandTokens.length > 1) {
-                        showEatItem(commandTokens[1]);
+                        adventureGame.showEatItem(commandTokens[1]);
                     } else {
                         IO.println("Eat what");
                     }
+                    break;
 
                 case "look":
                     showCurrentRoom();
@@ -123,75 +127,4 @@ public class UserInterface {
                 - exit
                 """);
     }
-
-    //metoden der bliver kaldt på når man skriver take ...
-    private void showTakeItem(String itemName) {
-
-        Item item = adventureGame.takeItem(itemName);
-
-        if (item != null) {
-            IO.println(
-                    "You have taken "
-                            + item.getLongName()
-            );
-        } else {
-            IO.println(
-                    "There is nothing like "
-                            + itemName
-                            + " to take around here"
-            );
-        }
-    }
-
-    //metoden der bliver kaldt på når man skriver eat
-    private void showEatItem(String itemName) {
-
-        EatResult result =
-                adventureGame.eat(itemName);
-
-        switch (result) {
-
-            case NOT_FOUND:
-                IO.println(
-                        "There is nothing like "
-                                + itemName
-                                + " to eat around here"
-                );
-                break;
-
-            case NOT_FOOD:
-                IO.println(
-                        "You cannot eat the "
-                                + itemName
-                );
-                break;
-
-            case EATEN:
-                IO.println(
-                        "You have eaten the "
-                                + itemName
-                );
-                break;
-        }
-    }
-
-    //metoden der bliver kaldt på når man skriver drop
-    private void showDropItem(String itemName) {
-
-        Item item = adventureGame.dropItem(itemName);
-
-        if (item != null) {
-            IO.println(
-                    "You have dropped "
-                            + item.getLongName()
-            );
-        } else {
-            IO.println(
-                    "You don't have anything like "
-                            + itemName
-                            + " in your inventory"
-            );
-        }
-    }
-
 }
