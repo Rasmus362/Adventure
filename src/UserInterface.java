@@ -60,8 +60,16 @@ public class UserInterface {
                     }
                     break;
 
-                case "go west":
-                    move("west");
+                case "attack":
+                    adventureGame.showAttack();
+                    break;
+
+                case "equip":
+                    if (commandTokens.length > 1) {
+                        adventureGame.showEquipItem(commandTokens[1]);
+                    } else {
+                        IO.println("Equip what");
+                    }
                     break;
 
                 case "exit":

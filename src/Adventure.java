@@ -40,6 +40,22 @@ public class Adventure {
     public ArrayList<Item> getInventory() {
         return player.getInventory();
     }
+
+    //metoden der sbliver kaldt på når man skriver equip
+    public void showEquipItem(String itemName) {
+        EquipResult result = player.equip(itemName);
+
+        switch (result) {
+            case NOT_FOUND: IO.println("You don't have anything like " + itemName + " in your inventory");
+            break;
+
+            case NOT_WEAPON: IO.println(itemName + " is not a weapon");
+            break;
+
+            case EQUIPPED: IO.println("You have equipped " + itemName);
+            break;
+        }
+    }
     //----------------------------------------Actions-------------------------------------------
 
     //metoden der bliver kaldt på når man skriver take ...
