@@ -56,6 +56,10 @@ public class Adventure {
             break;
         }
     }
+    //Henter fra equipped fra player
+    public String getEquippedWeaponLongName() {
+        return player.getEquippedWeaponLongName();
+    }
     //----------------------------------------Actions-------------------------------------------
 
     //metoden der bliver kaldt på når man skriver take ...

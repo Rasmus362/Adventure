@@ -82,6 +82,9 @@ public class UserInterface {
                     for (Item item : adventureGame.getInventory()) {
                         IO.println(item.getLongName());
                     }
+                    if (adventureGame.getEquippedWeaponLongName() != null) {
+                        IO.println("Equipped: " + adventureGame.getEquippedWeaponLongName());
+                    }
                     break;
 
                 //Når man skriver health kan man se HP
