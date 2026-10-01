@@ -118,4 +118,21 @@ public class Player {
 
         return EquipResult.EQUIPPED;
     }
+    // metode til at angribe
+    public int attack() {
+        if (equippedWeapon == null) {
+            return -3;
+        }
+        if (equippedWeapon.canUse()) {
+            return -2;
+        }
+        return equippedWeapon.use();
+    }
+    //Metode til at fortælle hvilket våben der er equipped
+    public String getEquippedWeaponLongName() {
+        if (equippedWeapon == null) {
+            return null;
+        }
+        return equippedWeapon.getLongName();
+    }
 }
