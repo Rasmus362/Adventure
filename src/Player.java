@@ -126,7 +126,7 @@ public class Player {
         if (equippedWeapon == null) {
             return -3;
         }
-        if (equippedWeapon.canUse()) {
+        if (!equippedWeapon.canUse()) {
             return -2;
         }
         return equippedWeapon.use();
