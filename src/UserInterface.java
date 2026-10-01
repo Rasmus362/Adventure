@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserInterface {
 
@@ -20,6 +21,7 @@ public class UserInterface {
             //tilføjer så man kan samle items op
 
             switch (commandTokens[0]) {
+
                 case "take":
                     if (commandTokens.length > 1) {
                         adventureGame.showTakeItem(commandTokens[1]);
@@ -52,20 +54,12 @@ public class UserInterface {
                     showHelp();
                     break;
 
-                case "go north":
-                    move("north");
-                    break;
-
-                case "go east":
-                    move("east");
-                    break;
-
-                case "go south":
-                    move("south");
-                    break;
-
-                case "go west":
-                    move("west");
+                case "go":
+                    if (commandTokens.length > 1) {
+                        move(commandTokens[1]);
+                    } else {
+                        IO.println("Go where?");
+                    }
                     break;
 
                 case "exit":
