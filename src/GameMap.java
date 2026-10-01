@@ -32,6 +32,11 @@ public class GameMap {
         room1.addItem(bread);
         room2.addItem(cake);
 
+        //Laver et melee våben for at teste
+        MeleeWeapon sword = new MeleeWeapon("sword", "a rusty sword");
+        //tilføjer det til et rum
+        room1.addItem(sword);
+
         // Alle de forskellige veje man kan tage i spillet.
 //room 1
         room1.setEast(room2);
