@@ -52,16 +52,12 @@ public class UserInterface {
                     showHelp();
                     break;
 
-                case "go north":
-                    move("north");
-                    break;
-
-                case "go east":
-                    move("east");
-                    break;
-
-                case "go south":
-                    move("south");
+                case "go":
+                    if (commandTokens.length > 1) {
+                        move(commandTokens[1]);
+                    } else {
+                        IO.println("Go where?");
+                    }
                     break;
 
                 case "go west":
