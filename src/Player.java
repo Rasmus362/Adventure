@@ -104,4 +104,18 @@ public class Player {
 
         return EatResult.EATEN;
     }
+    //metode til at equippe våben, samt teste om det er et våben (Samme concept som eat)
+    public EquipResult equip(String itemName) {
+        Item item = findItem(itemName);
+
+        if (item == null) {
+            return EquipResult.NOT_FOUND;
+        }
+        if (!(item instanceof Weapon weapon)) {
+            return EquipResult.NOT_WEAPON;
+        }
+        equippedWeapon = weapon;
+
+        return EquipResult.EQUIPPED;
+    }
 }
