@@ -10,26 +10,32 @@ public class Adventure {
         gameMap = new GameMap();
         player = new Player(gameMap.getStartRoom());
     }
+
     //--------------------------------- movement relaterede metoder --------------------------
     public boolean move(String direction) {
         return player.move(direction);
     }
+
     //--------------------------------- Room relaterede metoder -------------------------------
     public String getCurrentRoomName() {
         return player.getCurrentRoomName();
     }
+
     public String getCurrentRoomDescription() {
         return player.getCurrentRoomDescription();
     }
+
     //metode til at give current rooms item videre
     public ArrayList<Item> getCurrentRoomItems() {
         return player.getCurrentRoomItems();
     }
+
     //------------------------------------- inventory & health ---------------------------------
     //metode til at se HP, som er oprettet i Player klassen
     public int getHealth() {
         return player.getHealth();
     }
+
     //metode fra player class til at se inventory
     public ArrayList<Item> getInventory() {
         return player.getInventory();
@@ -102,6 +108,22 @@ public class Adventure {
                                 + itemName
                 );
                 break;
+        }
+    }
+
+    //metoden der bliver kaldt på når man skriver attack
+    public void showAttack() {
+        int result = player.attack();
+
+        if (result == -3) {
+            IO.println("You don't have a weapon equipped");
+        } else if (result == -2) {
+            IO.println("The " + player.getEquippedWeaponLongName() + " is out of ammunition");
+        } else if (result == -1) {
+            IO.println("You swing the " + player.getEquippedWeaponLongName() + " into the empty air.");
+        } else {
+            IO.println("You fire the " + player.getEquippedWeaponLongName() + " into the empty air. "
+                    + result + " shots left");
         }
     }
 }
