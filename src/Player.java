@@ -10,6 +10,9 @@ public class Player {
     //Healthpoints fra del 3, spilleren starter med 100 i liv
     private int health = 100;
 
+    //equippedweapon er til at starte med automatisk null
+    private Weapon equippedWeapon;
+
     //getter til Health
     public int getHealth() {
         return health;
