@@ -74,6 +74,9 @@ public class Player {
     public Item dropItem(String itemName) {
         Item item = findItem(itemName);
         if (item != null) {
+            if (item == equippedWeapon) {
+                equippedWeapon = null;
+            }
             inventory.remove(item); //Fjerne item fra inventory
             currentRoom.addItem(item); //Tilføjer det til rummet
             return item;
