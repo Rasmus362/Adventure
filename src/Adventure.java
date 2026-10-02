@@ -40,7 +40,7 @@ public class Adventure {
         }
     }
 
-    //--------------------------------- Room relaterede metoder -------------------------------
+    //---------------------------------- Room relaterede metoder -------------------------------
     //metode til at vise current room
     public void showCurrentRoom() {
         IO.println("You are in " + player.getCurrentRoomName());
