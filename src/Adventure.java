@@ -20,10 +20,12 @@ public class Adventure {
                 - go east
                 - go south
                 - go west
-                - inventory (to see inventory)
-                - take + item to take an item
-                - drop + item to drop an item
-                - eat + food item to eat item
+                - inventory
+                - take + item
+                - drop + item
+                - eat + food item
+                - attack
+                - health
                 - exit
                 """);
     }
