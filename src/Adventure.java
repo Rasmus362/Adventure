@@ -11,9 +11,34 @@ public class Adventure {
         player = new Player(gameMap.getStartRoom());
     }
 
+    //--------------------------------- Help --------------------------------------------
+    public void showHelp() {
+        IO.println("""
+                Commands:
+                - look
+                - go north
+                - go east
+                - go south
+                - go west
+                - inventory (to see inventory)
+                - take + item to take an item
+                - drop + item to drop an item
+                - eat + food item to eat item
+                - exit
+                """);
+    }
+
     //--------------------------------- movement relaterede metoder --------------------------
     public boolean move(String direction) {
         return player.move(direction);
+    }
+
+    public void showMove(String direction) {
+        IO.println("Going " + direction);
+        boolean moved = player.move(direction);
+        if (!moved) {
+            IO.println("you cannot go that way");
+        }
     }
 
     //--------------------------------- Room relaterede metoder -------------------------------
@@ -28,6 +53,20 @@ public class Adventure {
     //metode til at give current rooms item videre
     public ArrayList<Item> getCurrentRoomItems() {
         return player.getCurrentRoomItems();
+    }
+    //metode til at vise current room
+    public void showCurrentRoom() {
+        IO.println("You are in " + player.getCurrentRoomName());
+        IO.println(player.getCurrentRoomDescription());
+        //Så man kan se items i rummet, hvis der er nogle
+        ArrayList<Item> items = player.getCurrentRoomItems();
+        if (!items.isEmpty()) {
+            IO.println("Here you see:");
+
+            for (Item item : items) {
+                IO.println("- " + item.getLongName());
+            }
+        }
     }
 
     //------------------------------------- inventory & health ---------------------------------
@@ -46,16 +85,20 @@ public class Adventure {
         EquipResult result = player.equip(itemName);
 
         switch (result) {
-            case NOT_FOUND: IO.println("You don't have anything like " + itemName + " in your inventory");
-            break;
+            case NOT_FOUND:
+                IO.println("You don't have anything like " + itemName + " in your inventory");
+                break;
 
-            case NOT_WEAPON: IO.println(itemName + " is not a weapon");
-            break;
+            case NOT_WEAPON:
+                IO.println(itemName + " is not a weapon");
+                break;
 
-            case EQUIPPED: IO.println("You have equipped " + itemName);
-            break;
+            case EQUIPPED:
+                IO.println("You have equipped " + itemName);
+                break;
         }
     }
+
     //Henter fra equipped fra player
     public String getEquippedWeaponLongName() {
         return player.getEquippedWeaponLongName();
