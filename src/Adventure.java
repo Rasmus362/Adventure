@@ -24,6 +24,7 @@ public class Adventure {
                 - take + item
                 - drop + item
                 - eat + food item
+                - equip + weapon
                 - attack
                 - health
                 - exit
