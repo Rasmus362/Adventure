@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserInterface {
 
@@ -20,6 +21,7 @@ public class UserInterface {
             //tilføjer så man kan samle items op
 
             switch (commandTokens[0]) {
+
                 case "take":
                     if (commandTokens.length > 1) {
                         adventureGame.showTakeItem(commandTokens[1]);

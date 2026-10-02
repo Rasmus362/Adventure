@@ -1,6 +1,6 @@
 public class GameMap {
     //GameMaps opgave er at bygge mappen
-    private Room startRoom;
+    private final Room startRoom;
 
     public GameMap() {
         //Oprettelse af rummene
@@ -18,19 +18,34 @@ public class GameMap {
         Item coin = new Item("coin", "a shiny gold coin");
         Item ring = new Item("ring", "old and dirty silver ring");
         Item boots = new Item("boots", "brand new pair of boots");
+        Item pieceOfWood = new Item("wood", "looks like a tabel leg");
+        Item sword = new Item("sword", "partially rusted sword");
+        Item shield = new Item("shield", "scratched leather shield");
+        Item goldTreasure = new Item("Treasure", "the keeps long hidden treasure");
 
         //tilføjer items, til de forskellige rum
         room1.addItem(coin);
         room1.addItem(ring);
         room2.addItem(boots);
+        room2.addItem(pieceOfWood);
+        room3.addItem(shield);
+        room5.addItem(goldTreasure);
+        room6.addItem(sword);
+
 
         //tilføjer mad til spillet (fra del 3) (minus betyder dårlig mad, der tager HP)
         Food bread = new Food("bread", "a loaf of stale old bread", -10);
         Food cake = new Food("cake", "tasty cake", 20);
+        Food healthPotion = new Food("potion", "a potion of red liquid", 35);
+        Food deadRat = new Food("rat", "rat carcass", -20);
+        Food oldRations = new Food("rations", "small box of rations", 20);
 
         //tilføjer mad til rum
         room1.addItem(bread);
+        room1.addItem(healthPotion);
         room2.addItem(cake);
+        room3.addItem(deadRat);
+        room7.addItem(oldRations);
 
         //Laver et melee våben for at teste
         MeleeWeapon sword = new MeleeWeapon("sword", "a rusty sword");
