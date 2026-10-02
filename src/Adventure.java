@@ -31,10 +31,6 @@ public class Adventure {
     }
 
     //--------------------------------- movement relaterede metoder --------------------------
-    public boolean move(String direction) {
-        return player.move(direction);
-    }
-
     public void showMove(String direction) {
         IO.println("Going " + direction);
         boolean moved = player.move(direction);
@@ -44,18 +40,6 @@ public class Adventure {
     }
 
     //--------------------------------- Room relaterede metoder -------------------------------
-    public String getCurrentRoomName() {
-        return player.getCurrentRoomName();
-    }
-
-    public String getCurrentRoomDescription() {
-        return player.getCurrentRoomDescription();
-    }
-
-    //metode til at give current rooms item videre
-    public ArrayList<Item> getCurrentRoomItems() {
-        return player.getCurrentRoomItems();
-    }
     //metode til at vise current room
     public void showCurrentRoom() {
         IO.println("You are in " + player.getCurrentRoomName());
@@ -146,32 +130,19 @@ public class Adventure {
 
     //metoden der bliver kaldt på når man skriver eat
     public void showEatItem(String itemName) {
-
-        EatResult result =
-                player.eat(itemName);
+        EatResult result = player.eat(itemName);
 
         switch (result) {
-
             case NOT_FOUND:
-                IO.println(
-                        "There is nothing like "
-                                + itemName
-                                + " to eat around here"
-                );
+                IO.println("There is nothing like " + itemName + " to eat around here");
                 break;
 
             case NOT_FOOD:
-                IO.println(
-                        "You cannot eat the "
-                                + itemName
-                );
+                IO.println("You cannot eat the " + itemName);
                 break;
 
             case EATEN:
-                IO.println(
-                        "You have eaten the "
-                                + itemName
-                );
+                IO.println("You have eaten the " + itemName);
                 break;
         }
     }
