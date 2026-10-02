@@ -47,6 +47,16 @@ public class GameMap {
         room3.addItem(deadRat);
         room7.addItem(oldRations);
 
+        //Laver et melee våben for at teste
+        MeleeWeapon sword = new MeleeWeapon("sword", "a rusty sword");
+        //tilføjer det til et rum
+        room1.addItem(sword);
+
+        //Laver et ranged våben for at teste
+        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 6);
+        //tilføjer det til et rum
+        room2.addItem(bow);
+
         // Alle de forskellige veje man kan tage i spillet.
 //room 1
         room1.setEast(room2);

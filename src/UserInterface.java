@@ -47,18 +47,30 @@ public class UserInterface {
                     break;
 
                 case "look":
-                    showCurrentRoom();
+                    adventureGame.showCurrentRoom();
                     break;
 
                 case "help":
-                    showHelp();
+                    adventureGame.showHelp();
                     break;
 
                 case "go":
                     if (commandTokens.length > 1) {
-                        move(commandTokens[1]);
+                        adventureGame.showMove(commandTokens[1]);
                     } else {
                         IO.println("Go where?");
+                    }
+                    break;
+
+                case "attack":
+                    adventureGame.showAttack();
+                    break;
+
+                case "equip":
+                    if (commandTokens.length > 1) {
+                        adventureGame.showEquipItem(commandTokens[1]);
+                    } else {
+                        IO.println("Equip what");
                     }
                     break;
 
@@ -72,6 +84,9 @@ public class UserInterface {
                     for (Item item : adventureGame.getInventory()) {
                         IO.println(item.getLongName());
                     }
+                    if (adventureGame.getEquippedWeaponLongName() != null) {
+                        IO.println("Equipped: " + adventureGame.getEquippedWeaponLongName());
+                    }
                     break;
 
                 //Når man skriver health kan man se HP
@@ -83,42 +98,4 @@ public class UserInterface {
         }
     }
 
-    private void move(String direction) {
-        IO.println("Going " + direction);
-        boolean moved = adventureGame.move(direction);
-        if (!moved) {
-            IO.println("you cannot go that way");
-        }
-    }
-
-    //metode til at vise current room
-    private void showCurrentRoom() {
-        IO.println("You are in " + adventureGame.getCurrentRoomName());
-        IO.println(adventureGame.getCurrentRoomDescription());
-        //Så man kan se items i rummet, hvis der er nogle
-        ArrayList<Item> items = adventureGame.getCurrentRoomItems();
-        if (!items.isEmpty()) {
-            IO.println("Here you see:");
-
-            for (Item item : items) {
-                IO.println("- " + item.getLongName());
-            }
-        }
-    }
-
-    private void showHelp() {
-        IO.println("""
-                Commands:
-                - look
-                - go north
-                - go east
-                - go south
-                - go west
-                - inventory (to see inventory)
-                - take + item to take an item
-                - drop + item to drop an item
-                - eat + food item to eat item
-                - exit
-                """);
-    }
 }

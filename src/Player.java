@@ -10,6 +10,9 @@ public class Player {
     //Healthpoints fra del 3, spilleren starter med 100 i liv
     private int health = 100;
 
+    //equippedweapon er til at starte med automatisk null
+    private Weapon equippedWeapon;
+
     //getter til Health
     public int getHealth() {
         return health;
@@ -71,6 +74,9 @@ public class Player {
     public Item dropItem(String itemName) {
         Item item = findItem(itemName);
         if (item != null) {
+            if (item == equippedWeapon) {
+                equippedWeapon = null;
+            }
             inventory.remove(item); //Fjerne item fra inventory
             currentRoom.addItem(item); //Tilføjer det til rummet
             return item;
@@ -100,5 +106,36 @@ public class Player {
         currentRoom.removeItem(item); //ligeledes fra currentroom hvis det var der
 
         return EatResult.EATEN;
+    }
+    //metode til at equippe våben, samt teste om det er et våben (Samme concept som eat)
+    public EquipResult equip(String itemName) {
+        Item item = findItem(itemName);
+
+        if (item == null) {
+            return EquipResult.NOT_FOUND;
+        }
+        if (!(item instanceof Weapon weapon)) {
+            return EquipResult.NOT_WEAPON;
+        }
+        equippedWeapon = weapon;
+
+        return EquipResult.EQUIPPED;
+    }
+    // metode til at angribe
+    public int attack() {
+        if (equippedWeapon == null) {
+            return -3;
+        }
+        if (!equippedWeapon.canUse()) {
+            return -2;
+        }
+        return equippedWeapon.use();
+    }
+    //Metode til at fortælle hvilket våben der er equipped
+    public String getEquippedWeaponLongName() {
+        if (equippedWeapon == null) {
+            return null;
+        }
+        return equippedWeapon.getLongName();
     }
 }
