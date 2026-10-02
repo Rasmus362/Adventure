@@ -48,9 +48,9 @@ public class GameMap {
         room7.addItem(oldRations);
 
         //Laver et melee våben for at teste
-        MeleeWeapon sword = new MeleeWeapon("sword", "a rusty sword");
+        MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace");
         //tilføjer det til et rum
-        room1.addItem(sword);
+        room1.addItem(mace);
 
         //Laver et ranged våben for at teste
         RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 6);
