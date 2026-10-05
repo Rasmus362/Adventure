@@ -1,8 +1,10 @@
 public abstract class Weapon extends Item {
 
+    private int damage;
     //constructor der kalder på forældre klassen Items (super)
-    public Weapon(String shortName, String longName) {
+    public Weapon(String shortName, String longName, int damage) {
         super(shortName, longName);
+        this.damage = damage;
     }
     //Fortæller om konkrete våben kan bruges
     public abstract boolean canUse();

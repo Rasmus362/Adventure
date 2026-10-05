@@ -48,12 +48,12 @@ public class GameMap {
         room7.addItem(oldRations);
 
         //Laver et melee våben for at teste
-        MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace");
+        MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace", 5);
         //tilføjer det til et rum
         room1.addItem(mace);
 
         //Laver et ranged våben for at teste
-        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 6);
+        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 3, 6);
         //tilføjer det til et rum
         room2.addItem(bow);
 
@@ -86,6 +86,17 @@ public class GameMap {
         room9.setNorth(room6);
         room9.setWest(room8);
 
+//Enemy kreation:
+        MeleeWeapon club = new MeleeWeapon("Club",
+                "An old table leg, now serving as a club.", 5);
+        Enemy skeletalWarrior = new Enemy("Skeletal",
+                "Skeletal Warrior",
+                "Standing ever vigil, the sorry pile of bones barely keeps it self together," +
+                        " as shambles towards you.", 15, club, room2);
+        room2.addEnemy(skeletalWarrior);
+
+//--------------------------------------------------------------------------------------------
+//fortæller hvilket rum spillet starter i.
         startRoom = room1;
     }
     //Getter til startRoom
