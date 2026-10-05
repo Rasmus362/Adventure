@@ -176,5 +176,10 @@ public class Adventure {
 
 
     //--------------------------------- PrintBox ------------------------------------
+    // 1. Tilføj alle items
+    public String getInventoryText(){
+        return player.getInventoryText();
+    }
+
 
 }

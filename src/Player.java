@@ -45,6 +45,22 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+    //Metode til at få ens inventory frem, i ens case.
+    public String getInventoryText(){
+        String inventoryText = "";
+
+        for (Item item : inventory) {
+            inventoryText += item.getLongName() + "\n";
+        }
+
+        // 2. Tilføj equipped weapon til samme tekst.
+        if (equippedWeapon != null){
+            inventoryText += "\nEquiped: " + equippedWeapon.getLongName();
+        }
+        //3. Først her printes inventory.
+        return inventoryText;
+
+    }
     //metode til at tage item, som samtidig fjerner det fra rummets arraylist
     public Item takeItem(String itemName) {
         Item item = currentRoom.findItem(itemName);

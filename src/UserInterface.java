@@ -89,22 +89,13 @@ public class UserInterface {
 
                 //Når man skriver inventory kan man se spilleren inventory
                 case "inventory":
-
-                    String inventoryText = "";
-
-                    // 1. Tilføj alle items
-                    for (Item item : adventureGame.getInventory()) {
-                        inventoryText += item.getLongName() + "\n";
-                    }
-
-                    // 2. Tilføj equipped weapon til samme tekst.
-                    if (adventureGame.getEquippedWeaponLongName() != null) {
-                        inventoryText += "\nEquipped: " +
-                                adventureGame.getEquippedWeaponLongName();
-                    }
-                    //3. Først her printes inventory.
-                    PrintBox.printBoxHeader("Inventory", inventoryText);
+                    PrintBox.printBoxHeader(
+                            "Inventory",
+                            adventureGame.getInventoryText()
+                    );
                     break;
+
+
 
                 //Når man skriver health kan man se HP
                 case "health":
