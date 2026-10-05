@@ -23,9 +23,9 @@ public class PrintBox {
 
     }
 
-    public static void printBoxHeader(String title, String text) {
+    public static void printBoxHeader(String header, String text) {
         int boksLength = 62;
-        int ledigPlads = boksLength - title.length()-2;
+        int ledigPlads = boksLength - header.length()-2;
         int venstreStreger = ledigPlads /2;
         int hoejreStreger = ledigPlads - venstreStreger;
 
@@ -35,7 +35,7 @@ public class PrintBox {
         //øverste del af boksen.
         IO.println("╔" +
                 "═".repeat(venstreStreger) +
-                " " + title + " "
+                " " + header + " "
                 + "═".repeat(hoejreStreger) +
                 "╗");
 
