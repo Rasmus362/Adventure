@@ -8,7 +8,7 @@ public class Enemy {
     Room currentRoom;
 
 
-    Enemy(String shortName, String longName, String description, int health, Weapon weapon, Room currentRoom){
+    Enemy(String shortName, String longName, String description, int health, Weapon weapon, Room currentRoom) {
 
         this.shortName = shortName;
         this.longName = longName;
@@ -19,4 +19,11 @@ public class Enemy {
 
     }
 
+    public String getShortName() {
+        return shortName;
+    }
+
+    public String getLongName() {
+        return longName;
+    }
 }

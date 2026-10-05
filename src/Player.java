@@ -5,7 +5,7 @@ public class Player {
     private Room currentRoom;
 
     //Arraylist til at håndtere spillerens inventory
-    private ArrayList<Item> inventory = new ArrayList<>();
+    private final ArrayList<Item> inventory = new ArrayList<>();
 
     //Healthpoints fra del 3, spilleren starter med 100 i liv
     private int health = 100;
@@ -34,33 +34,38 @@ public class Player {
         }
         return false;
     }
+
     //getters til nuværende rum navn og beskrivelse
     public String getCurrentRoomName() {
         return currentRoom.getName();
     }
+
     public String getCurrentRoomDescription() {
         return currentRoom.getDescription();
     }
+
     //metode til at se spillerens inventory
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+
     //Metode til at få ens inventory frem, i ens case.
-    public String getInventoryText(){
+    public String getInventoryText() {
         String inventoryText = "";
 
         for (Item item : inventory) {
-            inventoryText += item.getLongName() + "\n";
+            inventoryText += "- " + item.getLongName() + "\n";
         }
 
         // 2. Tilføj equipped weapon til samme tekst.
-        if (equippedWeapon != null){
+        if (equippedWeapon != null) {
             inventoryText += "\nEquiped: " + equippedWeapon.getLongName();
         }
         //3. Først her printes inventory.
         return inventoryText;
 
     }
+
     //metode til at tage item, som samtidig fjerner det fra rummets arraylist
     public Item takeItem(String itemName) {
         Item item = currentRoom.findItem(itemName);
@@ -72,6 +77,7 @@ public class Player {
         }
         return null;
     }
+
     //metode til at spilleren kan lede i sit eget inventory
     public Item findItem(String itemName) {
         for (Item item : inventory) {
@@ -81,6 +87,7 @@ public class Player {
         }
         return null;
     }
+
     //Metode til at spilleren kan smide items
     public Item dropItem(String itemName) {
         Item item = findItem(itemName);
@@ -94,10 +101,15 @@ public class Player {
         }
         return null;
     }
+
     //metode til at sende current rooms items videre til adventure
     public ArrayList<Item> getCurrentRoomItems() {
         return currentRoom.getItems();
     }
+    public ArrayList<Enemy> getCurrentRoomEnemies(){
+        return currentRoom.getEnemies();
+    }
+
     //Metode for at spilleren kan spise et food item
     public EatResult eat(String itemName) {
         Item item = findItem(itemName); //leder efter item i spillerens inventory
@@ -118,6 +130,7 @@ public class Player {
 
         return EatResult.EATEN;
     }
+
     //metode til at equippe våben, samt teste om det er et våben (Samme concept som eat)
     public EquipResult equip(String itemName) {
         Item item = findItem(itemName);
@@ -132,6 +145,7 @@ public class Player {
 
         return EquipResult.EQUIPPED;
     }
+
     // metode til at angribe
     public int attack() {
         if (equippedWeapon == null) {
@@ -142,6 +156,7 @@ public class Player {
         }
         return equippedWeapon.use();
     }
+
     //Metode til at fortælle hvilket våben der er equipped
     public String getEquippedWeaponLongName() {
         if (equippedWeapon == null) {
@@ -149,7 +164,8 @@ public class Player {
         }
         return equippedWeapon.getLongName();
     }
-//-----------------------------------Player Vitals-----------------------------
+
+    //-----------------------------------Player Vitals-----------------------------
     //getter til Health
     public int getHealth() {
         return health;
@@ -164,7 +180,7 @@ public class Player {
         }
     }
 
-    public boolean isAlive(){
+    public boolean isAlive() {
         return health > 0;
     }
 }
