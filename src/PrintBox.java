@@ -25,16 +25,28 @@ public class PrintBox {
 
     public static void printBoxHeader(String title, String text) {
         int boksLength = 62;
-        int streger = (boksLength - title.length() - 2) / 2;
+        int ledigPlads = boksLength - title.length()-2;
+        int venstreStreger = ledigPlads /2;
+        int hoejreStreger = ledigPlads - venstreStreger;
+
 
         String[] linjer = text.split("\n");
-        IO.println("╔" + "═".repeat(streger) + " " + title + "  " + "═".repeat(streger) + "╗");
+
+        //øverste del af boksen.
+        IO.println("╔" +
+                "═".repeat(venstreStreger) +
+                " " + title + " "
+                + "═".repeat(hoejreStreger) +
+                "╗");
+
         for (String linje : linjer) {
 
             int mellemrum = boksLength - linje.length() - 1;
 
+            //lodrette kanter.
             IO.println("║ " + linje + " ".repeat(mellemrum) + "║");
         }
+        // nederste del af boksen.
         IO.println("╚" + "═".repeat(boksLength) + "╝");
     }
 

@@ -108,7 +108,10 @@ public class UserInterface {
 
                 //Når man skriver health kan man se HP
                 case "health":
-                    IO.println("Health: " + adventureGame.getHealth());
+
+                    int health = adventureGame.getHealth();
+
+                    PrintBox.printBoxHeader("Health", "HP: " + health);
                     break;
             }
 
