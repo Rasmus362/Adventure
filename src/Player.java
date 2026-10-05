@@ -13,11 +13,6 @@ public class Player {
     //equippedweapon er til at starte med automatisk null
     private Weapon equippedWeapon;
 
-    //getter til Health
-    public int getHealth() {
-        return health;
-    }
-
     public Player(Room startRoom) {
         currentRoom = startRoom;
     }
@@ -137,5 +132,23 @@ public class Player {
             return null;
         }
         return equippedWeapon.getLongName();
+    }
+//-----------------------------------Player Vitals-----------------------------
+    //getter til Health
+    public int getHealth() {
+        return health;
+    }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+
+        if (health <= 0) {
+            health = 0;
+            //game over besked.
+        }
+    }
+
+    public boolean isAlive(){
+        return health > 0;
     }
 }

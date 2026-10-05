@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class UserInterface {
 
     public Adventure adventureGame;
@@ -12,6 +9,13 @@ public class UserInterface {
     public void run() {
         boolean running = true;
         while (running) {
+
+            if(!adventureGame.isPlayerAlive()){
+                PrintBox.print("GAME OVER!");
+                running = false;
+                continue;
+            }
+
             String command = IO.readln("> ");
 
             //Laver en String array, som modtager command "take" som får index nr. [0]
@@ -21,6 +25,12 @@ public class UserInterface {
             //tilføjer så man kan samle items op
 
             switch (commandTokens[0]) {
+
+                //Giver mulighed for at dræbe ens karakter og fremskynde "GAME OVER"
+                case "kill":
+                    adventureGame.takeDamage(999);
+                    continue;
+
 
                 case "take":
                     if (commandTokens.length > 1) {
@@ -69,24 +79,31 @@ public class UserInterface {
                 case "equip":
                     if (commandTokens.length > 1) {
                         adventureGame.showEquipItem(commandTokens[1]);
-                    } else {
-                        IO.println("Equip what");
                     }
                     break;
 
                 case "exit":
-                    IO.println("Exitting");
+                    PrintBox.printBox("Exitting");
                     running = false;
                     break;
 
                 //Når man skriver inventory kan man se spilleren inventory
                 case "inventory":
+
+                    String inventoryText = "";
+
+                    // 1. Tilføj alle items
                     for (Item item : adventureGame.getInventory()) {
-                        IO.println(item.getLongName());
+                        inventoryText += item.getLongName() + "\n";
                     }
+
+                    // 2. Tilføj equipped weapon til samme tekst.
                     if (adventureGame.getEquippedWeaponLongName() != null) {
-                        IO.println("Equipped: " + adventureGame.getEquippedWeaponLongName());
+                        inventoryText += "\nEquipped: " +
+                                adventureGame.getEquippedWeaponLongName();
                     }
+                    //3. Først her printes inventory.
+                    PrintBox.printBoxHeader("Inventory", inventoryText);
                     break;
 
                 //Når man skriver health kan man se HP

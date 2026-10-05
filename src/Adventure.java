@@ -163,4 +163,18 @@ public class Adventure {
                     + result + " shots left");
         }
     }
+
+    //----------------------------------Player vitals og stats-----------------------------------
+
+    public boolean isPlayerAlive() {
+        return player.isAlive();
+    }
+
+    public void takeDamage(int damage) {
+        player.takeDamage(damage);
+    }
+
+
+    //--------------------------------- PrintBox ------------------------------------
+
 }

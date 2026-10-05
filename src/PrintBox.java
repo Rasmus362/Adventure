@@ -1,0 +1,45 @@
+// Bemærk!
+// at dette ikke er et nødvendigt krav til vores opgave, blot en måde at give spillet lidt stil.
+
+// istedet for IO.println();
+// kan man indsætte: PrintBox.printBox
+
+public class PrintBox {
+
+
+    public static void printBox(String text) {
+
+        int boksLength = 62;
+        String[] linjer = text.split("\n");
+        IO.println("╔" + "═".repeat(boksLength) + "╗");
+        for (String linje : linjer) {
+
+            int mellemrum = boksLength - linje.length() - 1;
+
+            IO.println("║ " + linje + " ".repeat(mellemrum) + "║");
+
+        }
+        IO.println("╚" + "═".repeat(boksLength) + "╝");
+
+    }
+
+    public static void printBoxHeader(String title, String text) {
+        int boksLength = 62;
+        int streger = (boksLength - title.length() - 2) / 2;
+
+        String[] linjer = text.split("\n");
+        IO.println("╔" + "═".repeat(streger) + " " + title + "  " + "═".repeat(streger) + "╗");
+        for (String linje : linjer) {
+
+            int mellemrum = boksLength - linje.length() - 1;
+
+            IO.println("║ " + linje + " ".repeat(mellemrum) + "║");
+        }
+        IO.println("╚" + "═".repeat(boksLength) + "╝");
+    }
+
+    public static void print(String text){
+        printBox(text);
+    }
+
+}
