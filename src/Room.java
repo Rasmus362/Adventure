@@ -6,6 +6,9 @@ public class Room {
     //opretter Arraylist for items i rum
     private ArrayList<Item> items = new ArrayList<>();
 
+    //opretter ArrayList for enemies
+    private ArrayList<Enemy> enemies = new ArrayList<>();
+
     //Rummene
     private Room north;
     private Room east;
@@ -59,17 +62,21 @@ public class Room {
     public Room getWest() {
         return west;
     }
+
     //metoder til at tilføje og fjerne items fra rum
     public void removeItem(Item item) {
         items.remove(item);
     }
+
     public void addItem(Item item) {
         items.add(item);
     }
+
     //metode til at se items i rum
     public ArrayList<Item> getItems() {
         return items;
     }
+
     //metode til at finde bestemt item ud fra det korte navn
     public Item findItem(String itemName) {
         for (Item item : items) {
@@ -78,5 +85,12 @@ public class Room {
             }
         }
         return null;
+    }
+
+    public void addEnemy(Enemy enemy){
+        enemies.add(enemy);
+    }
+    public ArrayList<Enemy> getEnemies(){
+        return enemies;
     }
 }
