@@ -3,12 +3,14 @@ import java.util.ArrayList;
 public class Room {
     private final String name;
     private final String description;
+
     //opretter Arraylist for items i rum
     private ArrayList<Item> items = new ArrayList<>();
+
     //Arraylist fro enemies i rum
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
-    //Rummene
+    //rummene
     private Room north;
     private Room east;
     private Room south;
@@ -87,5 +89,14 @@ public class Room {
     //metode til at fjerne enemies
     public void removeEnemy(Enemy enemy) {
         enemies.remove(enemy);
+    }
+    //
+    public Enemy findEnemy(String enemyName) {
+        for (Enemy enemy : enemies) {
+            if (enemy.getShortName().equals(enemyName)) {
+                return enemy;
+            }
+        }
+        return null;
     }
 }
