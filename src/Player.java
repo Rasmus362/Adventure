@@ -146,4 +146,8 @@ public class Player {
     public boolean isAlive() {
         return health > 0;
     }
+    //Metode til at spilleren kan finde enemies i currentRoom
+    public Enemy findEnemy(String enemyName) {
+        return currentRoom.findEnemy(enemyName);
+    }
 }
