@@ -54,6 +54,15 @@ public class Adventure {
                 IO.println("- " + item.getLongName());
             }
         }
+        //tilføjelse så look også viser enemies
+        ArrayList<Enemy> enemies = player.getCurrentRoomEnemies();
+            if (!enemies.isEmpty()) {
+                IO.println("Beware! Here lurks:");
+
+                for (Enemy enemy : enemies) {
+                    IO.println("- " + enemy.getLongName());
+                }
+            }
     }
 
     //------------------------------------- inventory & health ---------------------------------
