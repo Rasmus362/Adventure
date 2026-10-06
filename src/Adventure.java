@@ -67,7 +67,7 @@ public class Adventure {
         return player.getInventory();
     }
 
-    //metoden der sbliver kaldt på når man skriver equip
+    //metoden der bliver kaldt på når man skriver equip
     public void showEquipItem(String itemName) {
         EquipResult result = player.equip(itemName);
 
