@@ -103,6 +103,10 @@ public class Adventure {
     public String getEquippedWeaponLongName() {
         return player.getEquippedWeaponLongName();
     }
+    //metoden til at tjekke om spilleren er død
+    public boolean isPlayerAlive() {
+        return player.isAlive();
+    }
     //----------------------------------------Actions-------------------------------------------
 
     //metoden der bliver kaldt på når man skriver take ...
@@ -161,8 +165,42 @@ public class Adventure {
         }
     }
 
-    //metoden der bliver kaldt på når man skriver attack
+    //metoder der bliver kaldt på når man skriver attack
     public void showAttack() {
+        Enemy enemy = player.getFirstEnemy();
+        if (enemy == null) {
+            showAttackEmptyAir();
+        } else {
+            showAttack(enemy.getShortName());
+        }
+    }
+    public void showAttack(String enemyName) {
+        Enemy enemy = player.findEnemy(enemyName);
+        if (enemy == null) {
+            IO.println("There is nothing like " + enemyName + " to attack around here");
+            return;
+        }
+        int damage = player.attack(enemy);
+        if (damage == -3) {
+            IO.println("You don't have a weapon equipped");
+            return;
+        }
+        if (damage == -2) {
+            IO.println(player.getEquippedWeaponLongName() + " is out of ammunition");
+            return;
+        }
+        IO.println("You hit" + enemy.getLongName() + " with " +
+                player.getEquippedWeaponLongName() + " for " + damage + " damage.");
+
+        if (enemy.isDead()) {
+            IO.println(enemy.getLongName() + " dies, dropping " + enemy.getWeaponLongName());
+            return;
+        }
+        int enemyDamage = enemy.attack(player);
+        IO.println(enemy.getLongName() + " attacks you for " + enemyDamage + " damage.");
+    }
+
+    private void showAttackEmptyAir() {
         int result = player.attack();
 
         if (result == -3) {

@@ -63,7 +63,11 @@ public class UserInterface {
                     break;
 
                 case "attack":
-                    adventureGame.showAttack();
+                    if (commandTokens.length > 1) {
+                        adventureGame.showAttack(commandTokens[1]);
+                    } else {
+                        adventureGame.showAttack();
+                    }
                     break;
 
                 case "equip":
