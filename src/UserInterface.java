@@ -10,7 +10,7 @@ public class UserInterface {
         boolean running = true;
         while (running) {
 
-            if(!adventureGame.isPlayerAlive()){
+            if (!adventureGame.isPlayerAlive()) {
                 PrintBox.print("GAME OVER!");
                 running = false;
                 continue;
@@ -73,7 +73,13 @@ public class UserInterface {
                     break;
 
                 case "attack":
-                    adventureGame.showAttack();
+                    if (commandTokens.length > 1) {
+                        String enemyName = commandTokens[1];
+                        adventureGame.showAttack(enemyName);
+                    } else {
+                        adventureGame.showAttack(null);
+                    }
+
                     break;
 
                 case "equip":
@@ -94,7 +100,6 @@ public class UserInterface {
                             adventureGame.getInventoryText()
                     );
                     break;
-
 
 
                 //Når man skriver health kan man se HP

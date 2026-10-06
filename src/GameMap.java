@@ -53,7 +53,7 @@ public class GameMap {
         room1.addItem(mace);
 
         //Laver et ranged våben for at teste
-        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 3, 6);
+        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 3, 0);
         //tilføjer det til et rum
         room2.addItem(bow);
 

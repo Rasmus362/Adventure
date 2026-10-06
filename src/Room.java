@@ -86,7 +86,15 @@ public class Room {
         }
         return null;
     }
+    public Enemy findEnemy(String enemyName){
+        for (Enemy enemy : enemies){
+            if (enemy.getShortName().equals(enemyName)){
+                return enemy;
+            }
+        }
 
+        return null;
+    }
     public void addEnemy(Enemy enemy){
         enemies.add(enemy);
     }

@@ -160,28 +160,66 @@ public class Adventure {
     }
 
     //metoden der bliver kaldt på når man skriver attack
-    public void showAttack() {
+    public void showAttack(String enemyName) {
         ArrayList<Enemy> enemies = player.getCurrentRoomEnemies();
-        if (!enemies.isEmpty()) {
-            //Angriber den første fjende i indexet.
-            Enemy foe = enemies.getFirst();
-            //Hvis spilleren så har et våben:
-            if (player.hasEquippedWeapon()) {
-                if (player.canUseEquippedWeapon()) {
-                    int damage = player.attack();
-                    foe.takeDamage(damage);
+        //ingen shortName angivet
+        if (enemyName == null) {
+            if (!enemies.isEmpty()) {
+                //Angriber den første fjende i indexet.
+                Enemy foe = enemies.getFirst();
+                //Hvis spilleren så har et våben:
+                if (player.hasEquippedWeapon()) {
+                    if (player.canUseEquippedWeapon()) {
+                        int damage = player.attack();
+                        foe.takeDamage(damage);
 
-                    //if enemy is dead.
-                    if (!foe.isAlive()) {
-                        //enemy er død.
-                        player.getCurrentRoom().addItem(foe.getWeapon());
-                        player.getCurrentRoom().removeEnemy(foe);
-                    } else {
-                        int enemyDamage = foe.attack();
-                        player.takeDamage(enemyDamage);
+                        //if enemy is dead.
+                        if (!foe.isAlive()) {
+                            //enemy er død.
+                            player.getCurrentRoom().addItem(foe.getWeapon());
+                            player.getCurrentRoom().removeEnemy(foe);
+                        } else {
+                            int enemyDamage = foe.attack();
+                            player.takeDamage(enemyDamage);
 
+                        }
                     }
                 }
+            } else {
+                if (player.hasEquippedWeapon()) {
+                    if (player.canUseEquippedWeapon()) {
+                        player.attack();
+                        PrintBox.printBox("You attack the air with fury unmatched");
+                    } else {
+                        PrintBox.printBox("Unsufficient ammunition");
+                    }
+                }
+
+
+            }
+        } else {
+            Enemy foe = player.getCurrentRoom().findEnemy(enemyName);
+            if (foe == null) {
+                PrintBox.printBox("There is no such creature to attack.");
+            } else {
+                if (player.hasEquippedWeapon()) {
+                    if (player.canUseEquippedWeapon()) {
+                        int damage = player.attack();
+                        foe.takeDamage(damage);
+
+                        if (!foe.isAlive()) {
+                            //enemy er død.
+                            player.getCurrentRoom().addItem(foe.getWeapon());
+                            player.getCurrentRoom().removeEnemy(foe);
+                        } else {
+                            int enemyDamage = foe.attack();
+                            player.takeDamage(enemyDamage);
+                        }
+
+                    }
+
+                }
+
             }
         }
     }
