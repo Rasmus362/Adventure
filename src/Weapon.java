@@ -10,4 +10,10 @@ public abstract class Weapon extends Item {
     public abstract boolean canUse();
     //Gør så konkrete våben selv kan bestemme hvad der sker når de bruges
     public abstract int use();
+
+    public int getDamage(){
+        return damage;
+    }
+
 }
+

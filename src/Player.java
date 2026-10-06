@@ -39,6 +39,9 @@ public class Player {
     public String getCurrentRoomName() {
         return currentRoom.getName();
     }
+    public Room getCurrentRoom(){
+        return currentRoom;
+    }
 
     public String getCurrentRoomDescription() {
         return currentRoom.getDescription();
@@ -149,10 +152,10 @@ public class Player {
     // metode til at angribe
     public int attack() {
         if (equippedWeapon == null) {
-            return -3;
+            return 0;
         }
         if (!equippedWeapon.canUse()) {
-            return -2;
+            return 0;
         }
         return equippedWeapon.use();
     }
@@ -163,6 +166,13 @@ public class Player {
             return null;
         }
         return equippedWeapon.getLongName();
+    }
+    public boolean canUseEquippedWeapon(){
+        return equippedWeapon.canUse();
+    }
+
+    public boolean hasEquippedWeapon(){
+        return equippedWeapon != null;
     }
 
     //-----------------------------------Player Vitals-----------------------------

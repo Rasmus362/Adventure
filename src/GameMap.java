@@ -87,11 +87,11 @@ public class GameMap {
         room9.setWest(room8);
 
 //Enemy kreation:
-        MeleeWeapon club = new MeleeWeapon("Club",
+        MeleeWeapon club = new MeleeWeapon("club",
                 "An old table leg, now serving as a club.", 5);
-        Enemy skeletalWarrior = new Enemy("Skeletal",
+        Enemy skeletalWarrior = new Enemy("warrior",
                 "Skeletal Warrior",
-                "Standing ever vigil, the sorry pile of bones barely keeps it self together," +
+                "The sorry pile of bones barely keeps it self together," +
                         " as shambles towards you.", 15, club, room2);
         room2.addEnemy(skeletalWarrior);
 

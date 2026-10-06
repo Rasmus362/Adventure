@@ -13,6 +13,6 @@ public class MeleeWeapon extends Weapon {
     //-1 som ubegrænset brug
     @Override
     public int use() {
-        return -1;
+        return getDamage();
     }
 }

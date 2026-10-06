@@ -26,4 +26,23 @@ public class Enemy {
     public String getLongName() {
         return longName;
     }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+
+        if (health <= 0) {
+            health = 0;
+            //Baddy dies.
+        }
+    }
+    public boolean isAlive() {
+        return health > 0;
+    }
+    public Weapon getWeapon(){
+        return this.weapon;
+    }
+    public int attack(){
+        return weapon.use();
+    }
+
 }

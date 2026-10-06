@@ -20,6 +20,6 @@ public class RangedWeapon extends Weapon {
         if (canUse()) {
             ammunition--;
         }
-        return ammunition;
+        return getDamage();
     }
 }
