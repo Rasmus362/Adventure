@@ -49,6 +49,7 @@ public class GameMap {
 
         //Laver et melee våben for at teste
         MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace", 20);
+        MeleeWeapon club = new MeleeWeapon("club", "a big and spiky wooden club", 30);
         //tilføjer det til et rum
         room1.addItem(mace);
 
@@ -56,6 +57,10 @@ public class GameMap {
         RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 6, 25);
         //tilføjer det til et rum
         room2.addItem(bow);
+
+        //Enemies
+        Enemy troll = new Enemy("troll", "a big troll", "a big and angry troll", 100, club, room5);
+        room5.addEnemy(troll);
 
         // Alle de forskellige veje man kan tage i spillet.
 //room 1
