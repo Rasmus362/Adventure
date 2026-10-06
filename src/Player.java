@@ -121,7 +121,7 @@ public class Player {
 
         return EquipResult.EQUIPPED;
     }
-    // metode til at angribe
+    // metode til at angribe tomme luft
     public int attack() {
         if (equippedWeapon == null) {
             return -3;
@@ -131,6 +131,20 @@ public class Player {
         }
         return equippedWeapon.use();
     }
+    //metode til at spilleren kan angribe en fjende
+    public int attack(Enemy enemy) {
+        if (equippedWeapon == null) {
+            return -3;
+        }
+        if (!equippedWeapon.canUse()) {
+            return -2;
+        }
+        int damage = equippedWeapon.getDamage();
+        equippedWeapon.use();
+        enemy.hit(damage);
+        return damage;
+    }
+
     //Metode til at fortælle hvilket våben der er equipped
     public String getEquippedWeaponLongName() {
         if (equippedWeapon == null) {
@@ -146,8 +160,17 @@ public class Player {
     public boolean isAlive() {
         return health > 0;
     }
-    //Metode til at spilleren kan finde enemies i currentRoom
+    //Metoder til at spilleren kan finde enemies i currentRoom
     public Enemy findEnemy(String enemyName) {
         return currentRoom.findEnemy(enemyName);
+    }
+    public Enemy getFirstEnemy() {
+        if (currentRoom.getEnemies().isEmpty()) {
+            return null;
+        }
+        return currentRoom.getEnemies().get(0);
+    }
+    public ArrayList<Enemy> getCurrentRoomEnemies() {
+        return currentRoom.getEnemies();
     }
 }
