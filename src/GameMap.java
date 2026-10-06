@@ -59,8 +59,8 @@ public class GameMap {
         room2.addItem(bow);
 
         //Enemies
-        Enemy troll = new Enemy("troll", "a big troll", "a big and angry troll", 100, club, room5);
-        room5.addEnemy(troll);
+        Enemy troll = new Enemy("troll", "a big troll", "a big and angry troll", 100, club, room2);
+        room2.addEnemy(troll);
 
         // Alle de forskellige veje man kan tage i spillet.
 //room 1
