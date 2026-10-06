@@ -98,6 +98,11 @@ public class UserInterface {
                     IO.println("Health: " + adventureGame.getHealth());
                     break;
             }
+            //Tjekker om spilleren er død
+            if (!adventureGame.isPlayerAlive()) {
+                IO.println("You died. Game over!");
+                running = false;
+            }
 
         }
     }
