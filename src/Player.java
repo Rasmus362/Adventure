@@ -138,4 +138,12 @@ public class Player {
         }
         return equippedWeapon.getLongName();
     }
+    //metode til at spilleren kan tage skade
+    public void hit(int damage) {
+        health -= damage;
+    }
+    //metode til at tjekke om spilleren er død
+    public boolean isAlive() {
+        return health > 0;
+    }
 }

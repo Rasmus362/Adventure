@@ -1,5 +1,5 @@
 public abstract class Weapon extends Item {
-
+    //tilføjelse af damage til våben, skal puttes i constructor i både melee og range
     private int damage;
 
     //constructor der kalder på forældre klassen Items (super)
