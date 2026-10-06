@@ -34,10 +34,14 @@ public class Adventure {
     //--------------------------------- movement relaterede metoder --------------------------
     public void showMove(String direction) {
         IO.println("Going " + direction);
+
         boolean moved = player.move(direction);
-        if (!moved) {
-            IO.println("you cannot go that way");
-        }
+            if (!moved) {
+                IO.println("you cannot go that way");
+
+        } else {
+                showCurrentRoom();
+            }
     }
 
     //---------------------------------- Room relaterede metoder -------------------------------
