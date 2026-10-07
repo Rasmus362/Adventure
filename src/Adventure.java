@@ -326,4 +326,8 @@ public class Adventure {
                     + result + " shots left");
         }
     }
+    //metode til at fortælle UI man har vundet
+    public boolean hasWon() {
+        return player.hasWon();
+    }
 }

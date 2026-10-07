@@ -102,6 +102,29 @@ public class UserInterface {
                 IO.println("You died. Game over!");
                 running = false;
             }
+            if (adventureGame.hasWon()) {
+                IO.println("""
+            
+            =========================================
+                         VICTORY!
+            =========================================
+            
+            After wandering through the dark halls
+            of the forgotten castle, you finally
+            claim its long-lost treasure.
+            
+            A hidden door opens, shinning light
+            through it.
+            
+            Against all odds, you survived.
+            
+            You have won the game!
+            =========================================
+            
+            """);
+
+                running = false;
+            }
 
         }
     }
