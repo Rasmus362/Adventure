@@ -300,7 +300,7 @@ public class Adventure {
             IO.println(player.getEquippedWeaponLongName() + " is out of ammunition");
             return;
         }
-        IO.println("You hit" + enemy.getLongName() + " with " +
+        IO.println("You hit " + enemy.getLongName() + " with " +
                 player.getEquippedWeaponLongName() + " for " + damage + " damage.");
 
         if (enemy.isDead()) {
@@ -309,6 +309,7 @@ public class Adventure {
         }
         int enemyDamage = enemy.attack(player);
         IO.println(enemy.getLongName() + " attacks you for " + enemyDamage + " damage.");
+        IO.println("Your health drops to: " + player.getHealth());
     }
 
     private void showAttackEmptyAir() {
