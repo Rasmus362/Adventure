@@ -39,13 +39,16 @@ public class GameMap {
         Food healthPotion = new Food("potion", "a potion of red liquid", 35);
         Food deadRat = new Food("rat", "rat carcass", -20);
         Food oldRations = new Food("rations", "small box of rations", 20);
+        Food flask = new Food("flask", "a flask of glowing yellow liquid", 50);
 
         //tilføjer mad til rum
         room1.addItem(bread);
         room1.addItem(healthPotion);
         room2.addItem(cake);
         room3.addItem(deadRat);
+        room3.addItem(flask);
         room7.addItem(oldRations);
+
 
         //Laver et melee våben for at teste
         MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace", 20);
