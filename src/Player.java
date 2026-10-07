@@ -13,6 +13,9 @@ public class Player {
     //equippedweapon er til at starte med automatisk null
     private Weapon equippedWeapon;
 
+    //metode til at spilleren kan vinde spillet
+    private boolean gameWon = false;
+
     //getter til Health
     public int getHealth() {
         return health;
@@ -172,5 +175,9 @@ public class Player {
     }
     public ArrayList<Enemy> getCurrentRoomEnemies() {
         return currentRoom.getEnemies();
+    }
+    //Getter til at vinde spillet
+    public boolean hasWon() {
+        return gameWon;
     }
 }
