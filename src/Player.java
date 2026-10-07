@@ -60,6 +60,12 @@ public class Player {
         if (item != null) {
             currentRoom.removeItem(item); //fjerner fra rummet
             inventory.add(item); //tilføjer til spillerens inventory
+
+            //tjekker efter treasure, da der er hvad der gør man vinder spillet
+            if (item.getShortName().equals("treasure")) {
+                gameWon = true;
+            }
+
             return item;
         }
         return null;
