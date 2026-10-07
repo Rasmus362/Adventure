@@ -272,6 +272,7 @@ public class Adventure {
 
             case EATEN:
                 IO.println("You have eaten the " + itemName);
+                IO.println("Your health is now: " + player.getHealth());
                 break;
         }
     }
