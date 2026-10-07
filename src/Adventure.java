@@ -30,6 +30,102 @@ public class Adventure {
                 - exit
                 """);
     }
+    //Metode til at spille en besked når spillet starter
+    public void showIntro() {
+
+        IO.println("""
+            
+            =========================================
+                    THE FORGOTTEN CASTLE
+            =========================================
+            
+            You awaken before the gates of an old castle.
+            The halls beyond are dark and silent...
+            but you have the strange feeling that you are not alone.
+            
+            Explore the castle, gather useful items,
+            find food to survive and weapons to defend yourself.
+            
+            When looking around, important item names are colored:
+            """);
+
+        IO.println(
+                ConsoleColors.YELLOW
+                        + "Yellow"
+                        + ConsoleColors.RESET
+                        + " = ordinary items"
+        );
+
+        IO.println(
+                ConsoleColors.BLUE
+                        + "Blue"
+                        + ConsoleColors.RESET
+                        + " = food"
+        );
+
+        IO.println(
+                ConsoleColors.RED
+                        + "Red"
+                        + ConsoleColors.RESET
+                        + " = weapons"
+        );
+
+        IO.println("""
+            
+            Useful commands:
+            
+            look: Look around the current room.
+            
+            go north / east / south / west: Move through the castle.
+            
+            take <item>: Pick up an item you can see.
+            
+            drop <item>: Drop an item from your inventory.
+            
+            inventory: See what you are carrying.
+            """);
+
+        IO.println(
+                "Use "
+                        + ConsoleColors.BLUE
+                        + "eat <food>"
+                        + ConsoleColors.RESET
+                        + " to eat food and change your health."
+        );
+
+        IO.println(
+                "Use "
+                        + ConsoleColors.RED
+                        + "equip <weapon>"
+                        + ConsoleColors.RESET
+                        + " to ready a weapon."
+        );
+
+        IO.println(
+                "Use "
+                        + ConsoleColors.RED
+                        + "attack"
+                        + ConsoleColors.RESET
+                        + " or "
+                        + ConsoleColors.RED
+                        + "attack <enemy>"
+                        + ConsoleColors.RESET
+                        + " to fight."
+        );
+
+        IO.println("""
+            
+            health: Check your current health.
+            
+            help: Show the command list again.
+            
+            exit: Leave the game.
+            
+            The castle awaits...
+            =========================================
+            
+            """);
+    }
 
     //Hjælpe metode der bliver kaldt på i showCurrentRoom(), den farver våben rød, food items blå
     //og almindelige items gule

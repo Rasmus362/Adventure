@@ -10,6 +10,7 @@ public class UserInterface {
     }
 
     public void run() {
+        adventureGame.showIntro();
         boolean running = true;
         while (running) {
             String command = IO.readln("> ");
@@ -17,8 +18,6 @@ public class UserInterface {
             //Laver en String array, som modtager command "take" som får index nr. [0]
             // og selve commanden, som beskrevet i switch'en nedenfor, det får index nr. [1]
             String[] commandTokens = command.trim().toLowerCase().split(" ");
-
-            //tilføjer så man kan samle items op
 
             switch (commandTokens[0]) {
 
