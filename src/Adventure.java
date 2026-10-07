@@ -31,6 +31,21 @@ public class Adventure {
                 """);
     }
 
+    //Hjælpe metode der bliver kaldt på i showCurrentRoom(), den farver våben rød, food items blå
+    //og almindelige items gule
+    private String colorItemName(Item item) {
+        String color;
+
+        if (item instanceof Weapon) {
+            color = ConsoleColors.RED;
+        } else if (item instanceof Food) {
+            color = ConsoleColors.BLUE;
+        } else {
+            color = ConsoleColors.YELLOW;
+        }
+        return item.getLongName().replace(item.getShortName(), color + item.getShortName() + ConsoleColors.RESET);
+    }
+
     //--------------------------------- movement relaterede metoder --------------------------
     public void showMove(String direction) {
         IO.println("Going " + direction);
@@ -55,7 +70,7 @@ public class Adventure {
             IO.println("Here you see:");
 
             for (Item item : items) {
-                IO.println("- " + item.getLongName());
+                IO.println("- " + colorItemName(item));
             }
         }
         //tilføjelse så look også viser enemies
