@@ -160,6 +160,7 @@ public class Adventure {
     public void showCurrentRoom() {
         IO.println("You are in " + player.getCurrentRoomName());
         IO.println(player.getCurrentRoomDescription());
+
         //Så man kan se items i rummet, hvis der er nogle
         ArrayList<Item> items = player.getCurrentRoomItems();
         if (!items.isEmpty()) {
@@ -223,19 +224,22 @@ public class Adventure {
     //metoden der bliver kaldt på når man skriver take ...
     public void showTakeItem(String itemName) {
 
+        // Treasure kan ikke tages, så længe troll stadig er i rummet
+        if (itemName.equals("treasure")
+                && player.findEnemy("troll") != null) {
+
+        IO.println("The troll guards the treasure. " + "You must defeat it first!");
+
+        return;
+        }
+
         Item item = player.takeItem(itemName);
 
         if (item != null) {
-            IO.println(
-                    "You have taken "
-                            + item.getLongName()
-            );
+            IO.println("You have taken " + item.getLongName());
+
         } else {
-            IO.println(
-                    "There is nothing like "
-                            + itemName
-                            + " to take around here"
-            );
+            IO.println("There is nothing like " + itemName + " to take around here");
         }
     }
 
