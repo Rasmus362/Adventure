@@ -19,18 +19,18 @@ public class GameMap {
         Item ring = new Item("ring", "old and dirty silver ring");
         Item boots = new Item("boots", "brand new pair of boots");
         Item pieceOfWood = new Item("wood", "looks like a tabel leg");
-        Item sword = new Item("sword", "partially rusted sword");
-        Item shield = new Item("shield", "scratched leather shield");
-        Item goldTreasure = new Item("Treasure", "the keeps long hidden treasure");
+        Item torch = new Item("torch", "a wet torch");
+        Item gloves = new Item("gloves", "a pair of leather gloves");
+        Item goldTreasure = new Item("treasure", "the keeps long hidden treasure");
 
         //tilføjer items, til de forskellige rum
         room1.addItem(coin);
         room1.addItem(ring);
         room2.addItem(boots);
         room2.addItem(pieceOfWood);
-        room3.addItem(shield);
+        room3.addItem(gloves);
         room5.addItem(goldTreasure);
-        room6.addItem(sword);
+        room6.addItem(torch);
 
 
         //tilføjer mad til spillet (fra del 3) (minus betyder dårlig mad, der tager HP)
@@ -39,23 +39,34 @@ public class GameMap {
         Food healthPotion = new Food("potion", "a potion of red liquid", 35);
         Food deadRat = new Food("rat", "rat carcass", -20);
         Food oldRations = new Food("rations", "small box of rations", 20);
+        Food flask = new Food("flask", "a flask of glowing yellow liquid", 50);
 
         //tilføjer mad til rum
         room1.addItem(bread);
         room1.addItem(healthPotion);
         room2.addItem(cake);
         room3.addItem(deadRat);
+        room3.addItem(flask);
         room7.addItem(oldRations);
 
+
         //Laver et melee våben for at teste
-        MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace");
+        MeleeWeapon mace = new MeleeWeapon("mace", "a rusty mace", 20);
+        MeleeWeapon club = new MeleeWeapon("club", "a big and spiky wooden club", 20);
         //tilføjer det til et rum
         room1.addItem(mace);
 
         //Laver et ranged våben for at teste
-        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 6);
+        RangedWeapon bow = new RangedWeapon("bow", "a simple bow", 6, 30);
+        RangedWeapon crossbow = new RangedWeapon("crossbow", "a wooden crossbow", 10, 40);
         //tilføjer det til et rum
         room2.addItem(bow);
+
+        //Enemies
+        Enemy troll = new Enemy("troll", "a big troll", "a big and angry troll", 100, club, room5);
+        Enemy zombie = new Enemy("zombie", "a zombie ranger", "a rotten zombie with a crossbow", 60, crossbow, room2);
+        room5.addEnemy(troll);
+        room2.addEnemy(zombie);
 
         // Alle de forskellige veje man kan tage i spillet.
 //room 1

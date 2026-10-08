@@ -13,6 +13,9 @@ public class Player {
     //equippedweapon er til at starte med automatisk null
     private Weapon equippedWeapon;
 
+    //metode til at spilleren kan vinde spillet
+    private boolean gameWon = false;
+
     //getter til Health
     public int getHealth() {
         return health;
@@ -57,6 +60,12 @@ public class Player {
         if (item != null) {
             currentRoom.removeItem(item); //fjerner fra rummet
             inventory.add(item); //tilføjer til spillerens inventory
+
+            //tjekker efter treasure, da der er hvad der gør man vinder spillet
+            if (item.getShortName().equals("treasure")) {
+                gameWon = true;
+            }
+
             return item;
         }
         return null;
@@ -121,7 +130,7 @@ public class Player {
 
         return EquipResult.EQUIPPED;
     }
-    // metode til at angribe
+    // metode til at angribe tomme luft
     public int attack() {
         if (equippedWeapon == null) {
             return -3;
@@ -131,11 +140,50 @@ public class Player {
         }
         return equippedWeapon.use();
     }
+    //metode til at spilleren kan angribe en fjende
+    public int attack(Enemy enemy) {
+        if (equippedWeapon == null) {
+            return -3;
+        }
+        if (!equippedWeapon.canUse()) {
+            return -2;
+        }
+        int damage = equippedWeapon.getDamage();
+        equippedWeapon.use();
+        enemy.hit(damage);
+        return damage;
+    }
+
     //Metode til at fortælle hvilket våben der er equipped
     public String getEquippedWeaponLongName() {
         if (equippedWeapon == null) {
             return null;
         }
         return equippedWeapon.getLongName();
+    }
+    //metode til at spilleren kan tage skade
+    public void hit(int damage) {
+        health -= damage;
+    }
+    //metode til at tjekke om spilleren er død
+    public boolean isAlive() {
+        return health > 0;
+    }
+    //Metoder til at spilleren kan finde enemies i currentRoom
+    public Enemy findEnemy(String enemyName) {
+        return currentRoom.findEnemy(enemyName);
+    }
+    public Enemy getFirstEnemy() {
+        if (currentRoom.getEnemies().isEmpty()) {
+            return null;
+        }
+        return currentRoom.getEnemies().get(0);
+    }
+    public ArrayList<Enemy> getCurrentRoomEnemies() {
+        return currentRoom.getEnemies();
+    }
+    //Getter til at vinde spillet
+    public boolean hasWon() {
+        return gameWon;
     }
 }

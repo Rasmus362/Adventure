@@ -1,8 +1,9 @@
 public class MeleeWeapon extends Weapon {
     //subclass til Weapon
+
     //constructor
-    public MeleeWeapon(String shortName, String longName) {
-        super(shortName, longName);
+    public MeleeWeapon(String shortName, String longName, int damage) {
+        super(shortName, longName, damage);
     }
 
     @Override

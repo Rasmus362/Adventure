@@ -2,9 +2,9 @@ public class RangedWeapon extends Weapon {
     //int da ranged våben skal have ammo
     private int ammunition;
 
-    //constructor hvor super refere til weapon klassen
-    public RangedWeapon(String shortName, String longName, int ammunition) {
-        super(shortName, longName);
+    //constructor hvor super referere til weapon klassen
+    public RangedWeapon(String shortName, String longName, int ammunition, int damage) {
+        super(shortName, longName, damage);
         this.ammunition = ammunition;
     }
 

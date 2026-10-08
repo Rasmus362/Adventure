@@ -10,6 +10,7 @@ public class UserInterface {
     }
 
     public void run() {
+        adventureGame.showIntro();
         boolean running = true;
         while (running) {
             String command = IO.readln("> ");
@@ -17,8 +18,6 @@ public class UserInterface {
             //Laver en String array, som modtager command "take" som får index nr. [0]
             // og selve commanden, som beskrevet i switch'en nedenfor, det får index nr. [1]
             String[] commandTokens = command.trim().toLowerCase().split(" ");
-
-            //tilføjer så man kan samle items op
 
             switch (commandTokens[0]) {
 
@@ -63,7 +62,11 @@ public class UserInterface {
                     break;
 
                 case "attack":
-                    adventureGame.showAttack();
+                    if (commandTokens.length > 1) {
+                        adventureGame.showAttack(commandTokens[1]);
+                    } else {
+                        adventureGame.showAttack();
+                    }
                     break;
 
                 case "equip":
@@ -93,6 +96,34 @@ public class UserInterface {
                 case "health":
                     IO.println("Health: " + adventureGame.getHealth());
                     break;
+            }
+            //Tjekker om spilleren er død
+            if (!adventureGame.isPlayerAlive()) {
+                IO.println("You died. Game over!");
+                running = false;
+            }
+            if (adventureGame.hasWon()) {
+                IO.println("""
+            
+            =========================================
+                         VICTORY!
+            =========================================
+            
+            After wandering through the dark halls
+            of the forgotten castle, you finally
+            claim its long-lost treasure.
+            
+            A hidden door opens, shinning light
+            through it.
+            
+            Against all odds, you survived.
+            
+            You have won the game!
+            =========================================
+            
+            """);
+
+                running = false;
             }
 
         }
