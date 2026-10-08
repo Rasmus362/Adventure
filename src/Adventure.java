@@ -265,23 +265,9 @@ public class Adventure {
     }
 
     //metoden der bliver kaldt på når man skriver eat
-    public void showEatItem(String itemName) {
-        EatResult result = player.eat(itemName);
+    public EatResult showEatItem(String itemName) {
+        return player.eat(itemName);
 
-        switch (result) {
-            case NOT_FOUND:
-                IO.println("There is nothing like " + itemName + " to eat around here");
-                break;
-
-            case NOT_FOOD:
-                IO.println("You cannot eat the " + itemName);
-                break;
-
-            case EATEN:
-                IO.println("You have eaten the " + itemName);
-                IO.println("Your health is now: " + player.getHealth());
-                break;
-        }
     }
 
     //metoder der bliver kaldt på når man skriver attack

@@ -39,7 +39,21 @@ public class UserInterface {
 
                 case "eat":
                     if (commandTokens.length > 1) {
-                        adventureGame.showEatItem(commandTokens[1]);
+                        EatResult result = adventureGame.showEatItem(commandTokens[1]);
+                        switch (result) {
+                            case NOT_FOUND:
+                                IO.println("There is nothing like " + commandTokens[1] + " to eat around here");
+                                break;
+
+                            case NOT_FOOD:
+                                IO.println("You cannot eat the " + commandTokens[1]);
+                                break;
+
+                            case EATEN:
+                                IO.println("You have eaten the " + commandTokens[1]);
+                                IO.println("Your health is now: " + adventureGame.getHealth());
+                                break;
+                        }
                     } else {
                         IO.println("Eat what");
                     }
