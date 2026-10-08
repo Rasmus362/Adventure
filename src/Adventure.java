@@ -30,24 +30,25 @@ public class Adventure {
                 - exit
                 """);
     }
+
     //Metode til at spille en besked når spillet starter
     public void showIntro() {
 
         IO.println("""
-            
-            =========================================
-                    THE FORGOTTEN CASTLE
-            =========================================
-            
-            You awaken before the gates of an old castle.
-            The halls beyond are dark and silent...
-            but you have the strange feeling that you are not alone.
-            
-            Explore the castle, gather useful items,
-            find food to survive and weapons to defend yourself.
-            
-            When looking around, important item names are colored:
-            """);
+                
+                =========================================
+                        THE FORGOTTEN CASTLE
+                =========================================
+                
+                You awaken before the gates of an old castle.
+                The halls beyond are dark and silent...
+                but you have the strange feeling that you are not alone.
+                
+                Explore the castle, gather useful items,
+                find food to survive and weapons to defend yourself.
+                
+                When looking around, important item names are colored:
+                """);
 
         IO.println(
                 ConsoleColors.YELLOW
@@ -71,19 +72,19 @@ public class Adventure {
         );
 
         IO.println("""
-            
-            Useful commands:
-            
-            look: Look around the current room.
-            
-            go north / east / south / west: Move through the castle.
-            
-            take <item>: Pick up an item you can see.
-            
-            drop <item>: Drop an item from your inventory.
-            
-            inventory: See what you are carrying.
-            """);
+                
+                Useful commands:
+                
+                look: Look around the current room.
+                
+                go north / east / south / west: Move through the castle.
+                
+                take <item>: Pick up an item you can see.
+                
+                drop <item>: Drop an item from your inventory.
+                
+                inventory: See what you are carrying.
+                """);
 
         IO.println(
                 "Use "
@@ -114,17 +115,17 @@ public class Adventure {
         );
 
         IO.println("""
-            
-            health: Check your current health.
-            
-            help: Show the command list again.
-            
-            exit: Leave the game.
-            
-            The castle awaits...
-            =========================================
-            
-            """);
+                
+                health: Check your current health.
+                
+                help: Show the command list again.
+                
+                exit: Leave the game.
+                
+                The castle awaits...
+                =========================================
+                
+                """);
     }
 
     //Hjælpe metode der bliver kaldt på i showCurrentRoom(), den farver våben rød, food items blå
@@ -147,12 +148,12 @@ public class Adventure {
         IO.println("Going " + direction);
 
         boolean moved = player.move(direction);
-            if (!moved) {
-                IO.println("you cannot go that way");
+        if (!moved) {
+            IO.println("you cannot go that way");
 
         } else {
-                showCurrentRoom();
-            }
+            showCurrentRoom();
+        }
     }
 
     //---------------------------------- Room relaterede metoder -------------------------------
@@ -172,13 +173,13 @@ public class Adventure {
         }
         //tilføjelse så look også viser enemies
         ArrayList<Enemy> enemies = player.getCurrentRoomEnemies();
-            if (!enemies.isEmpty()) {
-                IO.println("Beware! Here lurks:");
+        if (!enemies.isEmpty()) {
+            IO.println("Beware! Here lurks:");
 
-                for (Enemy enemy : enemies) {
-                    IO.println("- " + enemy.getLongName());
-                }
+            for (Enemy enemy : enemies) {
+                IO.println("- " + enemy.getLongName());
             }
+        }
     }
 
     //------------------------------------- inventory & health ---------------------------------
@@ -215,6 +216,7 @@ public class Adventure {
     public String getEquippedWeaponLongName() {
         return player.getEquippedWeaponLongName();
     }
+
     //metoden til at tjekke om spilleren er død
     public boolean isPlayerAlive() {
         return player.isAlive();
@@ -228,9 +230,10 @@ public class Adventure {
         if (itemName.equals("treasure")
                 && player.findEnemy("troll") != null) {
 
-        IO.println("The troll guards the treasure. " + "You must defeat it first!");
+            IO.println("The troll guards the treasure. " + "You must defeat it first!");
+            troldStraf("troll");
 
-        return;
+            return;
         }
 
         Item item = player.takeItem(itemName);
@@ -290,6 +293,7 @@ public class Adventure {
             showAttack(enemy.getShortName());
         }
     }
+
     public void showAttack(String enemyName) {
         Enemy enemy = player.findEnemy(enemyName);
         if (enemy == null) {
@@ -331,8 +335,17 @@ public class Adventure {
                     + result + " shots left");
         }
     }
+
     //metode til at fortælle UI man har vundet
     public boolean hasWon() {
         return player.hasWon();
+    }
+
+    //metode til at straffe spilleren for at være doven
+    private void troldStraf(String enemyName) {
+        Enemy enemy = player.findEnemy(enemyName);
+        int enemyDamage = enemy.attack(player);
+        IO.println(enemy.getLongName() + " attacks you for " + enemyDamage + " damage.");
+        IO.println("Your health drops to: " + player.getHealth());
     }
 }
